@@ -1,0 +1,41 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+h1{
+  color: aliceblue;
+  font-size: large;
+}
+body{
+  background: #777;
+  margin: 0px;
+}
+
+
+.container-a{
+  height: 40px;
+  background: white;
+  margin: 0;
+  text-align: center;
+  
+}
+a{
+  color: black;
+  text-decoration: none;
+  margin: 10px;
+  margin-left: 30px;
+  display: inline-block;
+}
+a:hover{
+  transition: 0.5s;
+  transform: scale(1.1);
+  color: cadetblue;
+}
+
+.titulo{
+  color: cadetblue;
+  font-size: large;
+  text-align: center;
+  margin-top: 20px;
+}
