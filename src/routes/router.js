@@ -1,6 +1,6 @@
 
 import { loadView } from "../helpers/loadView.js";
-import { categoriaController } from "../views/categoria/categoriacontroller.js";
+import { categoriaController } from "../views/categoria/categoriaController.js";
 import { inicioController } from "../views/inicio/inicioControlador.js";
 import { productoController } from "../views/producto/productoController.js";
 
@@ -27,8 +27,8 @@ export const router = async (app) => {
     const { template, controlador } = matchRoute(hash) || {};
   
     if (template && controlador) {
-      await loadView(app, template); // Usa el template definido en routes
-      controlador(); // Llama al controlador después de que la vista esté cargada
+      await loadView(app, template);
+      controlador(); 
     }
   };
   

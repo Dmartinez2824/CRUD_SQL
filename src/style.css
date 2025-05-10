@@ -8,9 +8,11 @@ h1{
   font-size: 30px;
   margin: 100px;
 }
-body{
-  background: #777;
-  margin: 0px;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 2rem;
 }
 
 
@@ -63,12 +65,14 @@ body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .campo {
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
+  /* margin-bottom: 1rem; */
+  
 }
 
 .campo label {
@@ -87,6 +91,10 @@ body {
 .input:focus {
   border-color: #93D94E;
   outline: none;
+}
+input:disabled{
+  background-color: #6FDD96;
+  opacity: 25%;
 }
 
 .btn {
@@ -123,10 +131,14 @@ body {
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
+.th-id{
+width: 5%;
+}
 
 .tabla th {
   background-color: #93D94E;
   color: white;
+  text-align: center;
 }
 
 .btn-editar,

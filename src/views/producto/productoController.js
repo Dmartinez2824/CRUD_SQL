@@ -13,7 +13,7 @@ export const productoController = () => {
     { id: "nombre", label: "Nombre" },
     { id: "descripcion", label: "Descripción" },
     { id: "precio", label: "Precio" },
-    { id: "categoria", label: "ID Categoría" }
+    // { id: "categoria", label: "ID Categoría" }
   ];
 
   campos.forEach(campo => {
@@ -34,12 +34,33 @@ export const productoController = () => {
     formulario.appendChild(campoGrupo);
   });
 
+  const campoCategoria = document.createElement("div");
+  campoCategoria.classList.add("campo");
+  
+  const categoriaSelect = document.createElement("select");
+  categoriaSelect.classList.add("input", "input-categoria");
+  categoriaSelect.id = "categoria";
+
+  const opcionDefault = document.createElement("option");
+  opcionDefault.value = "";
+  opcionDefault.textContent = "Seleccione una categoría";
+  categoriaSelect.appendChild(opcionDefault);
+
+  const labelCategoria = document.createElement("label");
+  labelCategoria.setAttribute("for", "categoria");
+  labelCategoria.textContent = "Categoría";
+
+  campoCategoria.append(labelCategoria, categoriaSelect);
+  formulario.appendChild(campoCategoria);
+
+
   const btnAgregar = document.createElement("button");
   btnAgregar.type = "submit";
   btnAgregar.textContent = "Añadir producto";
   btnAgregar.classList.add("btn", "btn-agregar");
-
   formulario.appendChild(btnAgregar);
+
+
 
   // ================ TABLA ===================
   const tablaContainer = document.createElement("div");
@@ -68,15 +89,15 @@ export const productoController = () => {
   contenedor.append(formulario, tablaContainer);
   main.appendChild(contenedor);
 
-  const productos = []; // Arreglo para almacenar productos temporalmente
+  const productos = []; 
 
   formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const nombre = document.querySelector(".input-nombre");
-    const descripcion = document.querySelector(".input-descripcion");
-    const precio = document.querySelector(".input-precio");
-    const categoria = document.querySelector(".input-categoria");
+    const nombre = document.querySelector(".input-nombre").value.trim();
+    const descripcion = document.querySelector(".input-descripcion").value.trim();
+    const precio = document.querySelector(".input-precio").value.trim();
+    const categoria = document.querySelector(".input-categoria").value.trim();
 
     if (!nombre || !descripcion || !precio || !categoria) {
       alert("Todos los campos son obligatorios");
