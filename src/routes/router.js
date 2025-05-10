@@ -7,48 +7,36 @@ import { productoController } from "../views/producto/productoController.js";
 
 const routes = {
     inicio: {
-      "template": "inicioControlador/index.html",
+      "template": "inicio/index.html",
       controlador: inicioController
     },
   productos: {
-    "template": "productoController/index.html",
+    "template": "producto/index.html",
     controlador: productoController
   },
   categorias: {
-    "template": "controladorcategorias/index.html",
+    "template": "categoria/index.html",
     controlador: categoriaController
   }
 
 };
 
 
-export const router = (app) => {
-    const hash = location.hash.slice(1) || 'inicio'; 
-    const route = matchRoute(hash);
-    if (!route) {
-      console.error(`Ruta no encontrada: ${hash}`);
-      return;
-    }
+export const router = async (app) => {
+    const hash = location.hash.slice(1);
+    const { template, controlador } = matchRoute(hash) || {};
   
-    const { template, controlador } = route;
-  
-    // Cargar la vista
-    loadView(app, template);
-  
-    if (typeof controlador === "function") {
-      controlador();
+    if (template && controlador) {
+      await loadView(app, template); // Usa el template definido en routes
+      controlador(); // Llama al controlador después de que la vista esté cargada
     }
   };
-
-  const matchRoute = (hash) => {
-    if (!hash) return routes["inicio"];
   
-    for (const route in routes) {
-      if (route === hash) {
-        return routes[route];
-      }
+  
+const matchRoute = (hash) => {
+  for (const route in routes) {
+    if (route === hash) {
+      return routes[route];
     }
-  
-    return null; 
-  };
-  
+  }
+} 
