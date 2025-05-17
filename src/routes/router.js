@@ -33,8 +33,12 @@ export const router = async (app) => {
   };
   
   
-const matchRoute = (hash) => {
+const matchRoute = (hash) => {    
+
+  const arreglo = hash.split('/');
+
   for (const route in routes) {
+    const b = route.split('/');
     if (route === hash) {
       return routes[route];
     }
